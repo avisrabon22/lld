@@ -1,12 +1,11 @@
-package com.myscaler.abstractClass;
+package com.myscaler.abstractClass.abs_interface;
 
 public abstract class absClass implements dogClas,catClass{
-    //  private String name;
     //  private int age;
-    void walk()
+    protected void walk()
     {
         System.out.println("Walk");
+        
     }
-
     public abstract void makeSound();
 }

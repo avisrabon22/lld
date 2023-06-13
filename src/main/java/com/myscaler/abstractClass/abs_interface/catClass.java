@@ -1,4 +1,4 @@
-package com.myscaler.abstractClass;
+package com.myscaler.abstractClass.abs_interface;
 
 public interface catClass {
     

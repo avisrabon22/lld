@@ -1,11 +1,13 @@
 package com.myscaler.abstractClass;
 
+import com.myscaler.abstractClass.abs_interface.absClass;
+
 public class childClass extends absClass{
     
     @Override
     public void makeSound() {
-        System.out.println("Pauuuuuuuuuuuuuu");
-        
+        System.out.println("Pauuuuuuuuuuuuuu");  
+          
     }
 
     @Override
@@ -22,9 +24,9 @@ public class childClass extends absClass{
      }
 
     @Override
-    void walk() {
+    protected void walk() {
         
-    }
+    }  
 
-    
+     
 }
