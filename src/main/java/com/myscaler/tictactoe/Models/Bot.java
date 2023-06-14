@@ -17,4 +17,10 @@ public class Bot extends Player {
         this.botDifficultyLevel = botDifficultyLevel;
     }
 
+    @Override
+    public Cell makeMove() {
+        // TODO Auto-generated method stub
+        return super.makeMove();
+    }
+
 }

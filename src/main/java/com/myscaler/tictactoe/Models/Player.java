@@ -12,6 +12,11 @@ public class Player {
         this.playerType = playerType;
     }
 
+    public Cell makeMove() {
+        return null;
+    }
+
+    // Gatters and Setters****************************
     public Symbol getSymbol() {
         return symbol;
     }

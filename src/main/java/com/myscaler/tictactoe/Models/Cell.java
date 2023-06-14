@@ -1,7 +1,6 @@
 package com.myscaler.tictactoe.Models;
 
 public class Cell {
-
     private int row;
     private int col;
     private CellState cellState;
@@ -13,6 +12,16 @@ public class Cell {
         this.cellState = CellState.EMPTY;
     }
 
+    // Display the cell method logic******************
+    public void display() {
+        if (getCellState().equals(CellState.EMPTY)) {
+            System.out.println("- |");
+        } else {
+            System.out.println(getPlayer().getSymbol().getaChar() + " |");
+        }
+    }
+
+    // Gatters and Setters *****************************
     public int getRow() {
         return row;
     }
