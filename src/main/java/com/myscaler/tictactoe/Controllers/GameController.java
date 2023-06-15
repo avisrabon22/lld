@@ -25,6 +25,7 @@ public class GameController {
 
     // Undo ****************************
     public void undo(Game game) {
+        game.undo();
 
     }
 
@@ -35,7 +36,7 @@ public class GameController {
 
     // Game status ************************
     public GameStatus getGameStatus(Game game) {
-        return null;
+        return game.getGameStatus();
     }
 
     // Print the winner ****************************

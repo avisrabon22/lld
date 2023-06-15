@@ -38,7 +38,7 @@ public class Board {
 
     public void print() {
         for (List<Cell> row : board) {
-            System.out.println("|");
+            System.out.printf("|");
             for (Cell cell : row) {
                 cell.display();
             }

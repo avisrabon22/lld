@@ -31,6 +31,30 @@ public class Game {
         return new Builder();
     }
 
+    // undo method**************888
+    public void undo() {
+        if (moves.size() == 0) {
+            System.out.println("No move can not undo.");
+            return;
+        }
+
+        Move lastMove = moves.get(moves.size() - 1);
+
+        for (WinningStratergies winningStratergies : winningStratergies) {
+            winningStratergies.handleUndo(board, lastMove);
+        }
+
+        Cell cellOnBoard = lastMove.getCell();
+        cellOnBoard.setCellState(CellState.EMPTY);
+        cellOnBoard.setPlayer(null);
+
+        moves.remove(lastMove);
+
+        currentMovePlayerIndex -= 1;
+        currentMovePlayerIndex += players.size();
+        currentMovePlayerIndex %= players.size();
+    }
+
     // Check draw fo makeMove method********
     public boolean checkDraw() {
         if (moves.size() == board.getSize() * board.getSize()) {
@@ -71,8 +95,13 @@ public class Game {
     // Make move method logic*********************
     public void makeMove() {
         Player currentPlayer = players.get(currentMovePlayerIndex);
-        Cell proposedCell = currentPlayer.makeMove();
+        System.out.println("It is " + currentPlayer.getName() + "'s turn.");
+
+        Cell proposedCell = currentPlayer.makeMove(board);
+        System.out.println("Move made at row " + proposedCell.getRow() + " col " + proposedCell.getCol() + ".");
+
         if (!validateMove(proposedCell)) {
+            System.out.println("Invalid move, try again.");
             return;
         }
         Cell cellOnBoard = board.getBoard().get(proposedCell.getRow()).get(proposedCell.getCol());
@@ -97,12 +126,13 @@ public class Game {
 
     // print the board *************************************
     public void printBoard() {
+        System.out.println("How board look like: ");
         this.board.print();
     }
 
     // Print winner logic********************************
     public void printWinner() {
-        System.out.println(winner);
+        System.out.println("Jackpot " + winner.getName());
     }
 
     // Print the result logic**********************************

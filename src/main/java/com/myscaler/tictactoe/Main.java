@@ -24,38 +24,45 @@ public class Main {
         GameController gameController = new GameController();
         // create a createGame funtion**********************
         Game game;
+        int dimension = 3;
+        List<Player> players = List.of(
+                new Player(new Symbol('X'), "Avijit", PlayerType.HUMAN),
+                new Bot(new Symbol('0'), "Kishu", BotDifficultyLevel.EASY));
         try {
             game = gameController.createGame(
-                    3,
+                    dimension,
+                    players,
                     List.of(
-                            new Player(new Symbol('X'), "Avijit", PlayerType.HUMAN),
-                            new Bot(new Symbol('0'), "Kishu", BotDifficultyLevel.EASY)),
-                    List.of(
-                            new RowWinningStratesies(),
-                            new ColumnWinningStratergies(),
-                            new DiagonalWinningStratergies()));
+                            new RowWinningStratesies(dimension, players),
+                            new ColumnWinningStratergies(dimension, players),
+                            new DiagonalWinningStratergies(players)));
         } catch (Exception e) {
             System.out.println("There somthing wrong");
+            sc.close();
             return;
         }
 
         // Game.Builder gamBuilder = new Game.Builder();
 
         // start the game
+        System.out.println(
+                "..........................................Game started.....................................................");
         while (gameController.getGameStatus(game).equals(GameStatus.IN_PROGRESS)) {
             // first display the game*******************************
             gameController.displayBoard(game);
 
-            System.out.println("Do you wnat to undo?(Y/N)");
+            System.out.println("Does anyone want to undo?(Y/N)");
             String input = sc.next();
             // check Y or N for undo or move************************
             if (input.equalsIgnoreCase("Y")) {
                 gameController.undo(game);
-            } else {
+            } else if (input.equalsIgnoreCase("N")) {
                 gameController.makeMove(game);
+            } else {
+                System.out.println("Enter Y or N");
             }
         }
-
+        sc.close();
         // game status for winner check
         GameStatus gameStatus = new GameController().getGameStatus(game);
         if (gameStatus.equals(GameStatus.ENDED)) {

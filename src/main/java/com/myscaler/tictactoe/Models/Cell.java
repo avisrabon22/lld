@@ -15,9 +15,9 @@ public class Cell {
     // Display the cell method logic******************
     public void display() {
         if (getCellState().equals(CellState.EMPTY)) {
-            System.out.println("- |");
+            System.out.print(" - |");
         } else {
-            System.out.println(getPlayer().getSymbol().getaChar() + " |");
+            System.out.print(" " + getPlayer().getSymbol().getaChar() + " |");
         }
     }
 
