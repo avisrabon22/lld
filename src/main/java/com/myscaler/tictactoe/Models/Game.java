@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.myscaler.tictactoe.Exceptions.invalidParamException;
 import com.myscaler.tictactoe.Strategies.WinningStratergies.WinningStratergies;
 
 public class Game {
@@ -271,9 +272,9 @@ public class Game {
         }
 
         // funtion for build the game
-        public Game build() {
+        public Game build() throws invalidParamException {
             if (!valid()) {
-                throw new RuntimeException("Invalid Param");
+                throw new invalidParamException("Invalid Param");
             }
             return new Game(dimension, players, winningStratergies);
         }

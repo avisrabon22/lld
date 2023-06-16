@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.myscaler.tictactoe.Controllers.GameController;
+import com.myscaler.tictactoe.Exceptions.invalidParamException;
 import com.myscaler.tictactoe.Models.Bot;
 import com.myscaler.tictactoe.Models.BotDifficultyLevel;
 import com.myscaler.tictactoe.Models.Game;
@@ -36,8 +37,8 @@ public class Main {
                             new RowWinningStratesies(dimension, players),
                             new ColumnWinningStratergies(dimension, players),
                             new DiagonalWinningStratergies(players)));
-        } catch (Exception e) {
-            System.out.println("There somthing wrong");
+        } catch (invalidParamException e) {
+            System.out.println("There somthing wrong, please contact to administrator.");
             sc.close();
             return;
         }

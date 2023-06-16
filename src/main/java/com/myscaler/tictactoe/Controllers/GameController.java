@@ -2,6 +2,7 @@ package com.myscaler.tictactoe.Controllers;
 
 import java.util.List;
 
+import com.myscaler.tictactoe.Exceptions.invalidParamException;
 import com.myscaler.tictactoe.Models.Game;
 import com.myscaler.tictactoe.Models.GameStatus;
 import com.myscaler.tictactoe.Models.Player;
@@ -10,7 +11,8 @@ import com.myscaler.tictactoe.Strategies.WinningStratergies.WinningStratergies;
 public class GameController {
 
     // Create Game *************************
-    public Game createGame(int dimension, List<Player> players, List<WinningStratergies> winningStratergies) {
+    public Game createGame(int dimension, List<Player> players, List<WinningStratergies> winningStratergies)
+            throws invalidParamException {
         return Game.getBulder()
                 .setDimension(dimension)
                 .setPlayers(players)
